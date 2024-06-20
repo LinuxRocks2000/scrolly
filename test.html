@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Scrolly Test</title>
+        <style>
+            #main > * {
+                padding: 10px;
+                margin: 10px;
+            }
+            body, #main {
+                padding: 0px;
+                margin: 0px;
+            }
+            #boxtest {
+                height: 2em;
+                background-color: orange;
+                background-image: linear-gradient(90deg, red 0px, red calc(var(--scrolly-top) * 1px), transparent calc(var(--scrolly-top) * 1px), transparent);
+            }
+            #boxtest:hover {
+                height: calc(var(--scrolly-height) * 1px + 1px);
+            }
+            #scrolltest {
+                background-color: green;
+                height: 20vh;
+            }
+            .blank {
+                background-color: black;
+                background-image: radial-gradient(circle at calc(var(--mouse-x) * 1px) calc(var(--mouse-y) * 1px), white, black 20vw, black);
+                height: 100vh;
+                margin-left: 0px !important;
+                margin-right: 0px !important;
+            }
+            @keyframes bgscrub {
+                0% {
+                    background-color: red;
+                }
+                100% {
+                    background-color: blue;
+                }
+            }
+            #main {
+                height: 100vh;
+                width: 100vw;
+                position: absolute;
+                overflow: auto;
+                animation-name: bgscrub;
+                animation-play-state: paused;
+                animation-duration: 1.001s;
+                --frac: calc(var(--scrolly-scroll-top) / (var(--scrolly-scroll-height) - var(--scrolly-height)));
+                animation-delay: calc(-1s * var(--frac));
+            }
+            #hoverbar {
+                height: 1em;
+                position: fixed;
+                top: 0px;
+                z-index: 100;
+                overflow: hidden;
+                background-color: white;
+                width: 100vw;
+                text-align: center;
+                transition: height 0.5s;
+            }
+            #hoverbar:hover {
+                height: calc(var(--scrolly-scroll-height) * 1px);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="hoverbar" class="scrolly-track">
+            hover bar<br>
+            it goes like this<br>
+            hover bar<br>
+            it goes like this<br>
+            hover bar<br>
+            it goes like this<br>
+            hover bar<br>
+            it goes like this<br>
+            hover bar<br>
+            it goes like this<br>
+        </div>
+        <div id="main" class="scrolly-track scrolly-box">
+            <div id="scrolltest" class="scrolly">scroll position tracked</div>
+            <div class="blank scrolly-mouse">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illum culpa corrupti voluptatibus obcaecati, quidem voluptates veniam dignissimos libero accusantium nemo provident in ad voluptatum omnis, dolor natus sapiente! Voluptatum.</div>
+            <div id="boxtest" class="scrolly-box">box tracked</div>
+        </div>
+        <script src="scrolly.js"></script>
+    </body>
+</html>
