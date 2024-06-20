@@ -1,5 +1,23 @@
+/*
+Scrolly
+Copyright (C) 2024 Clarke Information Systems
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 /* Scrolly
-    By Tyler Clarke
+    By Tyler Clarke (https://clarkeis.com)
 
     This is a "microframework" that provides information about scrolling to your CSS code by manipulating CSSOM variables and classes.
     It is completely self-contained. You don't need to call an init function or anything. Just include scrolly.min.js in your web project and have fun!
@@ -12,8 +30,8 @@
     You can configure the visibility margin (the minimum amount of the element that has to be visible for it to be considered visible) with
     the --data-scrolly-margin, --data-scrolly-margin-top, --data-scrolly-margin-left, --data-scrolly-margin-right, and --data-scrolly-margin-bottom HTML attributes.
     
-    The scrolly-box class enables box updates (setting the css variables --box-top, --box-bottom, --box-left, --box-right, --box-height,
-    and --box-width). Scrolly will update these whenever the size or position of the element changes.
+    The scrolly-box class enables box updates (setting the css variables --scrolly-left, --scrolly-top, --scrolly-width, and --scrolly-height).
+    Scrolly will update these whenever the size or position of the element changes.
 
     The scrolly-track class enables scroll position updates (.scrollTop as --scrolly-scroll-top and .scrollLeft as --scrolly-scroll-left) and scrollbox information updates
     (.scrollHeight as --scrolly-scroll-height, .scrollWidth as --scrolly-scroll-width).
@@ -24,8 +42,6 @@
     Scrolly includes workarounds to function properly on mobile devices. This does not mean you should use it as a catchall, however - you should
     maximize CSS usage and minimize reliance on dynamically updating scrolly properties as much as possible. This is not because of any problem with
     scrolly, but rather because it's a good idea to avoid JavaScript as much as possible when you're making websites.
-
-    This software is protected by GNU GPLv3.
 */
 
 const scrolly = {

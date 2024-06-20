@@ -1,3 +1,12 @@
-*todo: write README*
-*in the meantime, read the comment at the top of scrolly.js, it'll explain most of what you need to know*
-*mainly you just need to include scrolly.min.js the typical way*
+# Scrolly
+Scrolly is a "microframework" for fancy scroll effects on the web. It is completely self-contained; you do not have to write any JavaScript to use it! Simply enable the relevant classes on elements in your HTML tree, and Scrolly will handle the rest. It is built by [Clarke Information Systems](https://clarkeis.com), but is open source.
+## Installing
+Scrolly aims to be as simple as possible. To this end, installing scrolly is as simple as copying scrolly.min.js into your project and including it with a script tag!
+## Usage
+Scrolly functions through four "special classes". Assign these to your HTML elements and scrolly will set up the appropriate event listeners, based on the class:
+* Class "scrolly": Scrolly will set the scrolly-active class on this element when it is fully visible, the scrolly-visible class on this element when it is partially visible, and the scrolly-in class if it has ever been visible. You can configure the visibility margin with the data-scrolly-margin-{top, bottom, left, right} properties.
+* Class "scrolly-box": Scrolly will set and manage the --scrolly-top, --scrolly-left, --scrolly-width, and --scrolly-height CSS variables on this element. These are unitless - to use them, you'll most likely need to do something like calc(var(--scrolly-top) * 1px). This is due to how CSS handles units.
+* Class "scrolly-track": Scrolly will manage the --scrolly-scroll-top, --scrolly-scroll-left, --scrolly-scroll-height, and --scrolly-scroll-width CSS variables on this element.
+* Class "scrolly-mouse": Scrolly will manage the --mouse-x and --mouse-y CSS variables for this element. They are relative to the start of the element, not to the start of the page.
+## Least Power Rule
+The LPR is one of the most oft-neglected rules of web development in our modern age, and it shows. JavaScript should never be used where CSS *can* be used - because CSS is faster than JavaScript, CSS is easier to maintain than JavaScript, and CSS runs in a very complex hardware rendering environment rather than a single processor rendering thread. Scrolly aims to follow LPR as much as possible, only using JavaScript for things CSS can't do (accessing scroll data, accessing mouse position data, accessing computed heights and widths, etc), but it needs your cooperation to be effective!
